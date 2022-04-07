@@ -3,3 +3,4 @@ __pychace__
 
 *.pyc
 *.log
+*.db
