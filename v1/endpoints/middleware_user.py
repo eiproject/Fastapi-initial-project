@@ -1,12 +1,20 @@
+from datetime import timedelta
+from core.forms.login_form import LoginForm
+from v1.endpoints.services_user import authenticate_user, create_access_token
+from .context_user import get_user
+from core import oauth2_scheme, settings as APPSETTING
+from core.models.token_data import TokenData
+from db import get_db_session
+from db.models import UserDto
 from fastapi import Depends, HTTPException, status
 from jose import jwt, JWTError
-from . import APP_SETTINGS, oauth2_scheme
-from .services_user import get_user
-from core.models.token_data import TokenData
-from core.models.user import User
-from core.models.database import fake_users_db
+from sqlalchemy.orm import Session
 
-async def get_current_user(token: str = Depends(oauth2_scheme)):
+
+def get_current_user(
+    token: str = Depends(oauth2_scheme), 
+    db: Session = Depends(get_db_session)
+    ):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -15,23 +23,23 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     try:
         payload = jwt.decode(
             token, 
-            APP_SETTINGS.SECRET_KEY, 
-            algorithms=[APP_SETTINGS.ALGORITHM]
+            APPSETTING.SECRET_KEY, 
+            algorithms=[APPSETTING.ALGORITHM]
             )
         
-        username: str = payload.get("sub")
-        if username is None:
+        user_id: str = payload.get("sub")
+        if user_id is None:
             raise credentials_exception
-        token_data = TokenData(username=username)
-    except JWTError:
+        token_data = TokenData(user_id=user_id)
+    except JWTError as e:
         raise credentials_exception
-    user = get_user(fake_users_db, username=token_data.username)
+    user = get_user(db, user_id=token_data.user_id)
     if user is None:
         raise credentials_exception
     return user
 
 
-async def get_current_active_user(current_user: User = Depends(get_current_user)):
-    if current_user.disabled:
+def get_current_active_user(current_user: UserDto = Depends(get_current_user)):
+    if not current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user

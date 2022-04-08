@@ -1,8 +1,14 @@
 from datetime import datetime, timedelta
 from typing import Optional
-from . import pwd_context, APP_SETTINGS
-from core.models.user import UserInDB
+
+from fastapi import HTTPException
+from core import pwd_context, settings as APP_SETTINGS
 from jose import JWTError, jwt
+from core.forms.register_form import RegisterForm
+from core.models.user import UserCredential
+from db.models import UserDto
+from .context_user import get_user, get_user_by_email, create_user
+
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
@@ -12,14 +18,27 @@ def get_password_hash(password):
     return pwd_context.hash(password)
 
 
-def get_user(db, username: str):
-    if username in db:
-        user_dict = db[username]
-        return UserInDB(**user_dict)
+def create_new_user(db, register_form: RegisterForm) -> UserDto:
+    user = get_user_by_email(db, register_form.email)
     
+    if user is None and (register_form.password == register_form.retype_password):
+        credential  = UserCredential(
+            email=register_form.email,
+            hashed_password=get_password_hash(register_form.password)
+        )
+        user = create_user(db, credential)
+        
+    elif user is not None:
+        raise HTTPException(status_code=400, detail="Email already registered")
     
-def authenticate_user(fake_db, username: str, password: str):
-    user = get_user(fake_db, username)
+    else:
+        raise HTTPException(status_code=400, detail="Password not match")
+    
+    return user 
+
+
+def authenticate_user(db, email: str, password: str) -> Optional[UserDto]:
+    user = get_user_by_email(db, email)
     if not user:
         return False
     if not verify_password(password, user.hashed_password):
