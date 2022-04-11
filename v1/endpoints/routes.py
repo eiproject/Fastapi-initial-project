@@ -1,8 +1,9 @@
-ENDPOINT_ROOT = '/api/v1'
+ROOT_V1 = '/api/v1'
 
+API_ROOT = '/'
 
-API_HOME = ENDPOINT_ROOT + '/'
-API_TOKEN = ENDPOINT_ROOT + '/token'
-API_LOGIN = ENDPOINT_ROOT + '/login'
-API_REGISTER = ENDPOINT_ROOT + '/register'
-API_USER = ENDPOINT_ROOT + '/user'
+API_HOME = ROOT_V1 + '/'
+API_TOKEN = ROOT_V1 + '/token'
+API_LOGIN = ROOT_V1 + '/login'
+API_REGISTER = ROOT_V1 + '/register'
+API_USER = ROOT_V1 + '/user'

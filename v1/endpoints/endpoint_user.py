@@ -1,21 +1,16 @@
 from .routes import *
 from core import app, settings as APPSETTING
-from core.models.token import Token
-from core.models.user import User
 from core.forms.login_form import LoginForm
 from core.forms.register_form import RegisterForm
+from core.models.token import Token
+from core.models.user import User
 from datetime import timedelta
 from db import get_db_session
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-from v1.endpoints.middleware_user import get_current_active_user
-from v1.endpoints.services_user import authenticate_user, create_access_token, create_new_user
-
-
-@app.get(API_HOME)
-async def hello_world():
-    return {'message': 'Hello World'}
+from v1.middleware_user import get_current_active_user
+from v1.services.service_user import authenticate_user, create_access_token, create_new_user
 
 
 @app.post(API_TOKEN, response_model=Token)

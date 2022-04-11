@@ -1,7 +1,7 @@
-from typing import List, Optional
-from sqlalchemy.orm import Session
 from core.models.user import UserCredential
 from db import models
+from sqlalchemy.orm import Session
+from typing import List, Optional
 
 
 def get_user(db: Session, user_id: int) -> Optional[models.UserDto]:

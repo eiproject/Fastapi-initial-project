@@ -1,10 +1,7 @@
-from datetime import timedelta
-from core.forms.login_form import LoginForm
-from v1.endpoints.services_user import authenticate_user, create_access_token
-from .context_user import get_user
 from core import oauth2_scheme, settings as APPSETTING
 from core.models.token_data import TokenData
 from db import get_db_session
+from db.contexts.context_user import get_user
 from db.models import UserDto
 from fastapi import Depends, HTTPException, status
 from jose import jwt, JWTError

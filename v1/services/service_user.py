@@ -1,13 +1,12 @@
-from datetime import datetime, timedelta
-from typing import Optional
-
-from fastapi import HTTPException
 from core import pwd_context, settings as APP_SETTINGS
-from jose import JWTError, jwt
 from core.forms.register_form import RegisterForm
 from core.models.user import UserCredential
+from datetime import datetime, timedelta
+from db.contexts.context_user import get_user, get_user_by_email, create_user
 from db.models import UserDto
-from .context_user import get_user, get_user_by_email, create_user
+from fastapi import HTTPException
+from jose import JWTError, jwt
+from typing import Optional
 
 
 def verify_password(plain_password, hashed_password):

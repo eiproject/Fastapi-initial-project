@@ -1,5 +1,5 @@
 import uvicorn
-from v1.endpoints.endpoints import *
+from v1.endpoints import *
 
 
 if __name__ == "__main__":
