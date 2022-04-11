@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from passlib.context import CryptContext
-from v1.endpoints.routes import API_TOKEN
+from v1.routes import API_TOKEN
 
 
 app = FastAPI()

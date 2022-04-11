@@ -1,4 +1,4 @@
-from .routes import *
+from ..routes import *
 from core import app, settings as APPSETTING
 from starlette.responses import RedirectResponse
 

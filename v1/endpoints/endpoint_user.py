@@ -1,4 +1,4 @@
-from .routes import *
+from ..routes import *
 from core import app, settings as APPSETTING
 from core.forms.login_form import LoginForm
 from core.forms.register_form import RegisterForm
