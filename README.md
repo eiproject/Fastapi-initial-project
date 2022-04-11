@@ -1,4 +1,4 @@
-# Fastapi──initial──project
+# Fastapi-initial-project
 
 Fastapi is a strength and efficient API framework in Python, used widely as a standalone service. With a lot of customization and flexibility peoples choose fastaip as their backend. This project is my own taste for Fastapi, conneted to some books that I read about coding principle. This code architecture maybe not your type, so you are freely to suggest me about what suit better.
 
@@ -6,17 +6,17 @@ Fastapi is a strength and efficient API framework in Python, used widely as a st
 
 This is a startship project which have several features as default:
 
-── Register, Login, and User lookup API
-── Integrated with fastapi default Docs
-── Local and remote database connection using sqlalchemy
-── JWT security on the middleware
-── Code friendly on API versioning
-── Good architecture for code expansion and customization based on SOLID principle
+- Register, Login, and User lookup API
+- Integrated with fastapi default Docs
+- Local and remote database connection using sqlalchemy
+- JWT security on the middleware
+- Code friendly on API versioning
+- Good architecture for code expansion and customization based on SOLID principle
 
-## Directory Tree
+## Project Architecture
 
 ```text
-Fastapi──initial──project
+Fastapi-initial-project
 ├── core
    ├── forms
       ├── login_form.py
