@@ -1,4 +1,6 @@
 .vscode
+.pytest_cache
+
 
 venv
 __pychace__
