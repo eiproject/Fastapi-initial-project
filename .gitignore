@@ -4,6 +4,7 @@
 
 venv
 __pychace__
+data
 
 *.pyc
 *.log

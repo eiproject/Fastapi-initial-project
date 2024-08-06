@@ -1,0 +1,40 @@
+services:
+  startship-db:
+    image: postgres:14-alpine
+    platform: linux/amd64 # optional
+    container_name: startship-db
+    restart: always
+    env_file:
+      - .env
+    environment:
+      TZ: 'Asia/Jakarta'
+    volumes:
+      - ./data/postgresql:/var/lib/postgresql/data
+    networks:
+      - default
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  startship-be:
+    image: startship:latest
+    platform: linux/amd64 # optional
+    container_name: startship-be
+    restart: always
+    ports:
+      - 8000:8000
+    networks:
+      - default
+    depends_on:
+      - startship-db
+    env_file:
+      - .env
+    command: sh -c "yoyo apply --batch && fastapi run"
+    # command: tail -F anything
+
+networks:
+  default:
+    driver: bridge
+

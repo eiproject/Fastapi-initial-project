@@ -14,6 +14,7 @@ Your Start Ship's Core Features:
 - **Clean and Spacious Architecture:** Your ship is built for speed and customization with a clean design.
 - **Engineer-Approved Blueprint:** We've followed the SOLID principles for a sturdy and reliable foundation.
 - **Test Flight Ready:** Get started quickly with our pre-packed Postman toolkit.
+- **Deploy Ready:** Docker and docker compose deployment is ready to launch in seconds.
 
 ## Project Architecture
 
