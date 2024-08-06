@@ -1,0 +1,9 @@
+from . import VERSION_PATH
+
+PATH_HOME = VERSION_PATH + '/'
+PATH_LOGIN = VERSION_PATH + '/login'
+PATH_TOKEN = VERSION_PATH + '/token'
+PATH_REGISTER = VERSION_PATH + '/register'
+
+PATH_TEST_PUBLIC_API = VERSION_PATH + '/test/public'
+PATH_TEST_PRIVATE_API = VERSION_PATH + '/test/private'

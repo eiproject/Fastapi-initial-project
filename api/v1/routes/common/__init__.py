@@ -1,0 +1,1 @@
+from .host_redirect import root_redirect_to_docs

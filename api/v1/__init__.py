@@ -1,0 +1,1 @@
+VERSION_PATH = '/v1'

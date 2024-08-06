@@ -1,6 +1,6 @@
-.vscode
+.env
 .pytest_cache
-
+.DS_Store
 
 venv
 __pychace__

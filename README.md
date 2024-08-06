@@ -1,58 +1,68 @@
-# Fastapi-initial-project
+# Fastapi Start Ship
 
-Fastapi is a strength and efficient API framework in Python, used widely as a standalone service. With a lot of customization and flexibility peoples choose fastaip as their backend. This project is my own taste for Fastapi, conneted to some books that I read about coding principle. This code architecture maybe not your type, so you are freely to suggest me about what suit better.
+I've built a lightning-fast API using Python's coolest framework, FastAPI. It's like a sleek, customizable race car for your data. I've engineered it with a clean architecture, meaning the code is organized and easy to understand (even for non-engineers!). Think of it as building a house with a solid foundation – it's strong, flexible, and ready for anything. Let's see how fast we can make your ideas fly!
 
 ## Features
 
-This is a startship project which have several features as default:
+Your Start Ship's Core Features:
 
-- Register, Login, and User lookup API
-- Integrated with fastapi default Docs
-- Local and remote database connection using sqlalchemy
-- JWT security on the middleware
-- Code friendly on API versioning
-- Good architecture for code expansion and customization based on SOLID principle
+- **Blast Off with Authentication:** Securely launch your missions with our rock-solid register, login, and testing APIs.
+- **Built-in Navigation:** Your ship comes equipped with FastAPI's docs for easy-to-use documentation.
+- **Data Connections:** Power your journey with data from local or remote database using SQLAlchemy.
+- **Secret Services:** Protect your valuable data with our JWT security shield.
+- **Future-Proof Design:** Easily adapt to new missions with our flexible API versioning system.
+- **Clean and Spacious Architecture:** Your ship is built for speed and customization with a clean design.
+- **Engineer-Approved Blueprint:** We've followed the SOLID principles for a sturdy and reliable foundation.
+- **Test Flight Ready:** Get started quickly with our pre-packed Postman toolkit.
 
 ## Project Architecture
 
 ```text
-Fastapi-initial-project
-├── core
-   ├── forms
-      ├── login_form.py
-      ├── register_form.py
-   ├── models
-      ├── token_data.py
-      ├── token.py
-      ├── user.py
-   ├── __init__.py
-   ├── settings.py
-├── db
-   ├── contexts
-      ├── context_user.py
-   ├── __init__.py
-   ├── credentials.py
-   ├── models.py
-   ├── settings.py
-├── tests
+FastAPI-Start Ship
+├── api
+   ├── injection
+      ... depedency injection
+   ├── middleware
+      ... api middleware
    ├── v1
-      ├── __init__.py
-      ├── test1.py
-   ├── __init____.py
-├── v1
-   ├── endpoints
-      ├── __init__.py
-      ├── endpoint_common.py
-      ├── endpoint_user.py
-   ├── services
-      ├── service_user.py
-   ├── __init___.py
-   ├── middleware_user.py
+      ├── form
+         ... request form
+      ├── repository
+         ... implementation of repository
+      ├── routes
+         ... api routes
+      ├── path.py
+   ├── exception.py
    ├── routes.py
-├ main.py
-├ test.py
+   ├── settings.py
+├── core
+   ├── dto
+      ... application dto
+   ├── model
+      ... application related model
+   ├── repository
+      ... abstract class of repository
+   ├── services
+      ... application service
+   ├── static
+      ... static variable 
+   ├── utils
+      ... applciation utility
+├── migrations
+   ... yoyo and sql migration file
+├── postman
+   ... real case API test 
+├── psql_db
+   ├── model
+      ... database model
+   ├── settings.py
+├ app.py
 ```
 
-## End
+## Depedency
 
-Thanks for your attention. Regards.
+I am using `Python 3.12.3`, you may use lower or higher version of Python, but keep in mind to tune the library in `requirements.txt`
+
+## That's All
+
+Thanks you and best regards!
